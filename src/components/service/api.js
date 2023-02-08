@@ -17,5 +17,3 @@ export const removeContact = async id => {
   const { data } = await axios.delete(`${url}/${id}`);
   return data;
 };
-
-//this is old API
