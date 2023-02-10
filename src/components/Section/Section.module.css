@@ -1,0 +1,7 @@
+@modern-normalize;
+
+.section{
+    display: block;
+    text-align: center;
+    padding: 20px 60px;
+}

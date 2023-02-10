@@ -1,9 +1,8 @@
+import { configureStore } from '@reduxjs/toolkit';
+
+import { rootReducer } from './reducers';
 import {
-  configureStore,
-  // getDefaultMiddleware,
-} from '@reduxjs/toolkit';
-import { rootReducer } from './Contacts.slice';
-import {
+  persistStore,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -12,8 +11,10 @@ import {
   REGISTER,
 } from 'redux-persist';
 
+// Store
 const store = configureStore({
   reducer: rootReducer,
+  devTools: process.env.NODE_ENV === 'development',
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -21,5 +22,5 @@ const store = configureStore({
       },
     }),
 });
-
-export { store };
+export const persistor = persistStore(store);
+export default store;

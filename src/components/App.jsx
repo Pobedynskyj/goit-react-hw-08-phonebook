@@ -1,22 +1,15 @@
-import { Contacts } from './features/contacts/Contacts';
-import s from './App.module.css';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import {
-  // addNewContact,
-  // deleteContact,
-  getAllContacts,
-} from './features/redux/actions';
+import { BrowserRouter } from 'react-router-dom';
 
-export const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllContacts());
-  }, [dispatch]);
+import ClientRoutes from './ClientRouters/ClientRouters';
+import Header from './Header';
+
+export function App() {
   return (
-    <div className={s.container}>
-      <h1 className={s.ttle}>Contacts book</h1>
-      <Contacts />
-    </div>
+    <>
+      <BrowserRouter basename="goit-react-hw-08-phonebook">
+        <Header />
+        <ClientRoutes />
+      </BrowserRouter>
+    </>
   );
-};
+}
